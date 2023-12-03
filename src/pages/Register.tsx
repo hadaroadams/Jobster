@@ -1,8 +1,9 @@
+import Forms from "../components/Forms"
 
 const Register = () => {
   return (
-    <div>
-      Hello i am register
+    <div  className=" w-full min-h-[100vh] bg-[#F0F4F8]  flex justify-center  items-center ">
+        <Forms formType='Register' />
     </div>
   )
 }

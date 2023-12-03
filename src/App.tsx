@@ -2,11 +2,14 @@ import { createBrowserRouter,RouterProvider } from "react-router-dom"
 import Landing from "./pages/Landing"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
+import {AddJob,AllJobs,DashBoard,Profile,Stats} from "./pages/dashboard"
 
 const router= createBrowserRouter([
   {
     path:'/',
-    element:<Landing/>
+    element:<Landing/>,
+    index:true
+    
   },
   {
     path:'/login',
@@ -15,6 +18,28 @@ const router= createBrowserRouter([
   {
     path:'/register',
     element:<Register/>
+  },
+  {
+    path:'/dashboard',
+    element:<DashBoard/>,
+    children:[
+      {
+        path:'/dashboard/stats',
+        element:<Stats/>
+      },
+      {
+        path:'/dashboard/alljobs',
+        element:<AddJob/>
+      },
+      {
+        path:'/dashboard/alljobs',
+        element:<AllJobs/>,
+      },
+      {
+        path:'/dashboard/profile',
+        element:<Profile/>
+      }
+    ]
   }
 ])
 
