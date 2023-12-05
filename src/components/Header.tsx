@@ -1,26 +1,26 @@
 import JosterLogo from "../assets/JobsterLogo.svg";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import SegmentIcon from '@mui/icons-material/Segment';
 import Wrapper from "../assets/wrappers/Header";
 
 const Header = () =>{
   return (
     <Wrapper>
             <div className="menuBtn">
-                <button><SegmentIcon/></button>
+                <button><i className="fa-solid fa-bars"></i></button>
             </div>
-            <div>
+            <div className="logoDiv">
                 <img src={JosterLogo} alt="" />
             </div>
-            <div>
+            <div className='pageName'>
                 <h1>DashBoard</h1>
             </div>
-            
-            <div>
+            <div className="testUserBtn">
                 <button>
                     <AccountCircleIcon/>
+                    <span>
                         Hadaro
+                    </span>
                     <ArrowDropDownIcon/>
                 </button>
             </div>
