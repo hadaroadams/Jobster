@@ -2,7 +2,7 @@
 const AddJob = () => {
   return (
     <div>
-      AddJob
+        <h1>hello AddJob</h1>
     </div>
   )
 }

@@ -24,11 +24,12 @@ const router= createBrowserRouter([
     element:<DashBoard/>,
     children:[
       {
-        path:'/dashboard/stats',
-        element:<Stats/>
+        path:'/dashboard/stat',
+        element:<Stats/>,
+        index:true
       },
       {
-        path:'/dashboard/alljobs',
+        path:'/dashboard/addjob',
         element:<AddJob/>
       },
       {

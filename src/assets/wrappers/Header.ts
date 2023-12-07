@@ -1,11 +1,14 @@
 import styled from "styled-components";
 
-const Wrapper=styled.nav`
+const Wrapper=styled.header`
     background-color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 30px;
+    width:100%;
+    transition: 1s;
+     /* border: 1px solid black; */
      
     .menuBtn button{
         display: flex;
