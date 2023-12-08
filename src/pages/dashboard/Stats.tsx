@@ -1,9 +1,15 @@
+import Wrapper from "../../assets/wrappers/Stats"
+import StatItem from "./StatItem"
 
 const Stats = () => {
   return (
-    <div>
-      <h1>Hello statistics</h1>
-    </div>
+    <Wrapper>
+      <div className="statsItemContainer">
+        <StatItem color="red" icon={<i className="fa-solid fa-bug"></i>} num={27} text="Interviews To be conducted"/>
+        <StatItem color="red" icon={<i className="fa-solid fa-bug"></i>} num={27} text="Interviews To be conducted"/>
+        <StatItem color="red" icon={<i className="fa-solid fa-bug"></i>} num={27} text="Interviews To be conducted"/>
+      </div>
+    </Wrapper>
   )
 }
 

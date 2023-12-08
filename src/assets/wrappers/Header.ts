@@ -7,7 +7,11 @@ const Wrapper=styled.header`
     align-items: center;
     padding: 20px 30px;
     width:100%;
+    border-bottom:1px solid #E5E7EB ;
     transition: 1s;
+    position: static;
+
+    
      /* border: 1px solid black; */
      
     .menuBtn button{
@@ -43,7 +47,9 @@ const Wrapper=styled.header`
     }
 
 
-    @media (min-width: 700px){
+    @media (min-width: 900px){
+        position: sticky;
+        top: 0;
         .pageName{
             display: block;
         }

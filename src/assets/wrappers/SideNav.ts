@@ -5,6 +5,11 @@ const Wrapper = styled.nav`
     height:100vh;
     background-color: #FFFFFF;
     width:400px;
+    display: none;
+    position: sticky;
+    left: 0;
+    top:0;
+    
     .sideNavLogoDiv{
         /* border: 1px solid black; */
         height: 100px;
@@ -16,11 +21,24 @@ const Wrapper = styled.nav`
     }
     .sideNavLinks ul li{
         margin-top:15px ;
-        color:#102A43
+        transition: 0.4s;
+        margin-left:0px;
+
     }
+    .sideNavLinks ul li:hover{
+         margin-left:10px;
+         color: #3B82F6
+    }
+    .sideNavLinks ul li:hover span{
+        color:#1B344C;
+    }
+    
     .sideNavLinks ul li span{
         margin-left: 20px;
 
+    }
+    @media (min-width:900px) {
+        display: block;
     }
  `
 export default Wrapper

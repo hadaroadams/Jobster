@@ -9,8 +9,9 @@ const DashBoard = () => {
       <SideNav/>
       <div className="dashHeaderContDiv">
         <Header/>
-        
-        <Outlet/>
+        <div className=" outletDiv w-full h-[86vh] border-2 border-gray-200">
+          <Outlet/>
+        </div>
       </div>
     </Wrapper>
   )

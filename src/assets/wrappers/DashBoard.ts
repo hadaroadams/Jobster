@@ -4,13 +4,13 @@ const Wrapper = styled.main`
     background-color: #F0F4F8;
     /* width:100vw; */
     width: 100%;
-    min-height: 100vh;
+    height:100%;
     display: flex;
     /* flex-direction: row-reverse; */
     .dashHeaderContDiv{
         width: 100%;
     }
-
+    
 `
 
 export default Wrapper
