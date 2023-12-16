@@ -1,5 +1,4 @@
 
-
 import { Link } from "react-router-dom"
 import {Links as link} from "../utilities/Links"
 
@@ -17,7 +16,7 @@ const Links = () => {
        link.map((item:LinkMap)=>{
        const {id,text,icon,path} = item
         // console.log(e)
-        return <li key={id}><Link to={`/dashboard${path}`}>{icon} <span>{text}</span></Link></li>
+        return <li key={id}><Link to={`${path}`}>{icon} <span>{text}</span></Link></li>
        }) 
       }
     </ul>

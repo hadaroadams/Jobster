@@ -8,12 +8,12 @@ const Wrapper = styled.section`
 
     @media (min-width:700px) {
         .statsItemContainer{
-            grid-template-columns: 1fr 1fr
+            grid-template-columns: 1fr 1fr;
         }
     }
     @media (min-width:1200px){
         .statsItemContainer{
-            grid-template-columns: 1fr 1fr 1fr
+            grid-template-columns: 1fr 1fr 1fr;
         }
     }
     

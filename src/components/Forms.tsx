@@ -2,16 +2,18 @@ import {Form} from 'react-router-dom'
 import JobsterLogo from '../assets/JobsterLogo.svg'
 import InputForm from './InputForms'
 import {Link} from 'react-router-dom'
+import React from 'react'
 
 interface FormProp {
   formType:string
+  submitForm:(e:React.FormEvent)=> void
 }
 
-const Forms = ({formType}:FormProp) => {
+const Forms = ({formType,submitForm}:FormProp) => {
   return (
     <main className='min-h-[90vh] my-10 w-[500px] bg-white shadow-xl rounded-lg overflow-hidden'>
       <div className='w-full h-2 bg-[#3B82F6]'></div>
-      <Form className='flex flex-col items-center space-y-4 p-10'>
+      <Form onSubmit={submitForm} className='flex flex-col items-center space-y-4 p-10'>
           <img src={JobsterLogo} alt=""  className='w-[200px] '/>
           <h1 className='text-center text-[#102A43] text-[2em] font-medium'>{formType}</h1>
         <div className='w-full space-y-7'>

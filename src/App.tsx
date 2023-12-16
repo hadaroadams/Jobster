@@ -6,7 +6,7 @@ import {AddJob,AllJobs,DashBoard,Profile,Stats} from "./pages/dashboard"
 
 const router= createBrowserRouter([
   {
-    path:'/',
+    path:'landing',
     element:<Landing/>,
     index:true
     
@@ -20,24 +20,23 @@ const router= createBrowserRouter([
     element:<Register/>
   },
   {
-    path:'/dashboard',
+    path:'/',
     element:<DashBoard/>,
     children:[
       {
-        path:'/dashboard/stat',
+        path:'/stat',
         element:<Stats/>,
-        index:true
       },
       {
-        path:'/dashboard/addjob',
+        path:'/addjob',
         element:<AddJob/>
       },
       {
-        path:'/dashboard/alljobs',
+        path:'/alljobs',
         element:<AllJobs/>,
       },
       {
-        path:'/dashboard/profile',
+        path:'/profile',
         element:<Profile/>
       }
     ]
