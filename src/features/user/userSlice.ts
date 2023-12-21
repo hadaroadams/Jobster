@@ -1,44 +1,53 @@
-import { createSlice,current,createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios'
-import { apiInstance } from '../../utilities/axios'
+import { createSlice, current, createAsyncThunk } from "@reduxjs/toolkit";
+import { registrationThunk } from "./userThunk";
+import { State } from "../../pages/Register";
+import { GetThunkAPI } from "@reduxjs/toolkit/dist/createAsyncThunk";
 
 interface UsersIntialValue {
-    number:number
+  number: number;
 }
 
- export const register = createAsyncThunk(
-    'user/s',
-    async(user,thunkApi)=>{
-        console.log(user,thunkApi)
-        const data = await apiInstance('/jobs')
-        return data
-    }
-)
-
-const initialState:UsersIntialValue ={
-    number: 2
+interface ApiCall {
+  message: string;
 }
+
+export const register = createAsyncThunk(
+  "users",
+  async (user: State, thunkApi) => {
+    return registrationThunk(user,thunkApi);
+  }
+);
+
+const initialState: UsersIntialValue = {
+  number: 2,
+};
 
 export const userSlice = createSlice({
-    name:"Users",
-    initialState,
-    reducers:{
-        addSomething:(state)=>{
-            state.number+=1
-            console.log('something')
-            console.log(current(state))
-        }
+  name: "Users",
+  initialState,
+  reducers: {
+    addSomething: (state) => {
+      state.number += 1;
+      console.log("something");
+      console.log(current(state));
     },
-    extraReducers:(builder)=>{
-        builder
-            .addCase(register.pending, (state)=>{
-                state.number=100
-                console.log(state.number)
-            })
-    }
-})
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(register.pending, (state, users) => {
+        state.number = 100;
+        console.log("pending");
+      })
+      .addCase(register.fulfilled, (state, users) => {
+        console.log("fulFilled");
+      })
+      .addCase(register.rejected, (state, users) => {
+        console.log("rejected");
+      });
+    // .addCase(register.)
+  },
+});
 
+export const { addSomething } = userSlice.actions;
 
-export const { addSomething } = userSlice.actions
-
-export default userSlice.reducer
+export default userSlice.reducer;

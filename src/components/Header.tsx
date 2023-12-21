@@ -4,16 +4,30 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import Wrapper from "../assets/wrappers/Header";
 import {useSelector,useDispatch} from 'react-redux'
 import { addSomething, register } from "../features/user/userSlice";
-import { RootState } from "../store";
+import { RootState, useAppDispatch } from "../store";
 
+interface InitialState{
+    name:string,
+    email:string,
+    password:string,
+    isMember:boolean
+
+}
+
+const initialState:InitialState={
+    name:'',
+    email:'',
+    password:'',
+    isMember:true
+}
 
 const Header = () =>{
     const state = useSelector((state:RootState)=>state)
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     console.log(state)
     const trial = ()=>{
         // dispatch(addSomething())
-        dispatch(register({name1:'red'},1))
+        dispatch(register({name:'hadaro',email:'hadaradams@gmail.com',password:'hjkrakd$%.'}) )
     }
   return (
     <Wrapper>
