@@ -22,7 +22,7 @@ interface ThunkApiConfig {
 export const registrationThunk = async (user: State, thunkApi:any) => {
   console.log(thunkApi)
   try {
-    const data = await apiInstance.post("/jobs/auth/register", user);
+    const data = await apiInstance.get('/jobs/stats');
     console.log(data);
     return data;
   } catch (error) {
