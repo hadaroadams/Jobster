@@ -1,53 +1,81 @@
 import { createSlice, current, createAsyncThunk } from "@reduxjs/toolkit";
-import { registrationThunk } from "./userThunk";
-import { State } from "../../pages/Register";
-import { GetThunkAPI } from "@reduxjs/toolkit/dist/createAsyncThunk";
+import { loginThunk, registrationThunk } from "./userThunk";
+import { State } from "../../components/Forms";
+import { addToLocalstorage } from "../../utilities/localstorage";
+import { Flag } from "@mui/icons-material";
 
 interface UsersIntialValue {
-  number: number;
+  isLoading: boolean;
+  isSideBarOpen:boolean;
+  user: {} | null;
 }
 
 interface ApiCall {
   message: string;
 }
 
-export const register = createAsyncThunk(
-  "users",
+export const registerUser = createAsyncThunk(
+  "user/register",
   async (user: State, thunkApi) => {
-    return registrationThunk(user,thunkApi);
+    console.log(user);
+    return registrationThunk("auth/register", user, thunkApi);
   }
 );
 
+export const loginUser = createAsyncThunk(
+  "user/login",
+  async (user: State, thunkApi) => {
+    return loginThunk('auth/login',user, thunkApi) 
+  }
+);
 const initialState: UsersIntialValue = {
-  number: 2,
+  isLoading: false,
+  isSideBarOpen:false,
+  user: null,
 };
 
 export const userSlice = createSlice({
   name: "Users",
   initialState,
   reducers: {
-    addSomething: (state) => {
-      state.number += 1;
-      console.log("something");
+    toggleSide: (state) => {
       console.log(current(state));
+      state.isSideBarOpen=!state.isSideBarOpen
     },
+    logOutUser:(state)=>{
+        state.user=null
+    }
   },
   extraReducers: (builder) => {
     builder
-      .addCase(register.pending, (state, users) => {
-        state.number = 100;
-        console.log("pending");
+      .addCase(registerUser.pending, (state, user) => {
+        state.isLoading = true;
+        // console.log(console.log(user));
       })
-      .addCase(register.fulfilled, (state, users) => {
+      .addCase(registerUser.fulfilled, (state, user) => {
+        state.isLoading = false;
+        console.log(user);
+        state.user = user.payload;
+        addToLocalstorage(state.user!);
         console.log("fulFilled");
       })
-      .addCase(register.rejected, (state, users) => {
+      .addCase(registerUser.rejected, (state, user) => {
+        state.isLoading = false;
         console.log("rejected");
-      });
+      })
+      .addCase(loginUser.pending, (state, user) => {
+        state.isLoading = true;
+      })
+      .addCase(loginUser.fulfilled, (state, user) => {
+        state.user = user.payload;
+        state.isLoading=false;
+      })
+      .addCase(loginUser.rejected,(state,user)=>{
+        state.isLoading = false;
+      })
     // .addCase(register.)
   },
 });
 
-export const { addSomething } = userSlice.actions;
-
+export const { toggleSide,logOutUser } = userSlice.actions;
 export default userSlice.reducer;

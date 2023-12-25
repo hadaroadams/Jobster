@@ -1,14 +1,11 @@
-import { useDispatch } from "react-redux"
 import Forms from "../components/Forms"
 import React, {useState} from 'react'
-import { register } from "../features/user/userSlice"
-import { useAppDispatch } from "../store"
 
-export interface State {
+interface State {
   name:string,
   email:string,
   password:string,
-  isMember?:boolean
+  isMember:boolean
 }
 const initialState:State={
   name:"",
@@ -19,18 +16,14 @@ const initialState:State={
 
 const Register = () => {
   const [value,setValue] = useState(initialState);
-  const dispatch = useAppDispatch()
-  
-  const handleChanges = ()=>{
 
-  }
   const onSumit= (e:React.FormEvent)=>{
     e.preventDefault
-    dispatch(register({name:'hadaro',email:'hadaradams@gmail.com',password:'hjkrakd$%.'}))
+    console.log(e)
   }
   return (
     <div  className=" w-full min-h-[100vh] bg-[#F0F4F8]  flex justify-center  items-center ">
-        <Forms formType='Register' submitForm={onSumit} />
+        <Forms formType='Register'/>
     </div>
   )
 }

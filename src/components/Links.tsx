@@ -1,26 +1,38 @@
-
-import { Link } from "react-router-dom"
-import {Links as link} from "../utilities/Links"
+import { Link } from "react-router-dom";
+import { Links as link } from "../utilities/Links";
+import { useAppDispatch } from "../store";
+import { toggleSide } from "../features/user/userSlice";
 
 type LinkMap = {
-    id:number,
-    text:string,
-    icon:JSX.Element|string
-    path:string,
-}
+  id: number;
+  text: string;
+  icon: JSX.Element | string;
+  path: string;
+};
 
-const Links = () => {
+const Links = ({ bigSide }: { bigSide?: boolean }) => {
+  const dispatch = useAppDispatch();
+  const linkFunc = () => {
+    if (bigSide) {
+      dispatch(toggleSide());
+    }
+  };
+
   return (
     <ul>
-      {
-       link.map((item:LinkMap)=>{
-       const {id,text,icon,path} = item
+      {link.map((item: LinkMap) => {
+        const { id, text, icon, path } = item;
         // console.log(e)
-        return <li key={id}><Link to={`${path}`}>{icon} <span>{text}</span></Link></li>
-       }) 
-      }
+        return (
+          <li key={id}>
+            <Link to={`${path}`} onClick={linkFunc}>
+              {icon} <span>{text}</span>
+            </Link>
+          </li>
+        );
+      })}
     </ul>
-  )
-}
+  );
+};
 
-export default Links
+export default Links;

@@ -1,8 +1,9 @@
+import ProfileMain from "../../components/ProfileMain"
 
 const Profile = () => {
   return (
     <div>
-    <h1>hello Profil</h1>
+        <ProfileMain/>
     </div>
   )
 }

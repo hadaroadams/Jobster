@@ -8,3 +8,4 @@ apiInstance.interceptors.request.use((config) => {
   console.log(config);
   return config;
 });
+console.log('hello')

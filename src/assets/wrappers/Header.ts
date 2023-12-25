@@ -10,8 +10,8 @@ const Wrapper=styled.header`
     border-bottom:1px solid #E5E7EB ;
     transition: 1s;
     position: static;
+    z-index: 2;
 
-    
      /* border: 1px solid black; */
      
     .menuBtn button{
@@ -30,7 +30,7 @@ const Wrapper=styled.header`
         color: #102A43;
         display: none;
     }
-    .testUserBtn button{
+    .testUserBtn .userButton,.testUserBtn .logOutBtn{
         background-color: #3B82F6;
         color: white;
         padding: 5px;
@@ -38,12 +38,25 @@ const Wrapper=styled.header`
         border-radius: 6px;
         transition: 0.5s;
     }
-    .testUserBtn button:hover{
+    .testUserBtn .userButton:hover{
         background-color: #1D4ED8;
     }
-    .testUserBtn button span{
+    .testUserBtn .userButton span{
         margin: 0px 15px;
         font-weight: 500;
+    }
+    .testUserBtn{
+        position: relative;
+        z-index:0px;
+    }
+    .testUserBtn .logOutBtn{
+        z-index: 0;
+        position: absolute;
+        color:#3B82F6;
+        left:0;
+        right:0;
+        margin: 50px 0px;
+        background-color:#DBEAFE;
     }
 
 

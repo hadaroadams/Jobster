@@ -24,7 +24,7 @@ const router= createBrowserRouter([
     element:<DashBoard/>,
     children:[
       {
-        path:'/stat',
+        path:'/',
         element:<Stats/>,
       },
       {

@@ -4,9 +4,11 @@ const Wrapper = styled.section`
 
     .statsItemContainer{
         display: grid;
+        margin: 30px 30px;
+        
     }
 
-    @media (min-width:700px) {
+    @media (min-width:800px) {
         .statsItemContainer{
             grid-template-columns: 1fr 1fr;
         }

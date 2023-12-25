@@ -1,14 +1,19 @@
 import styled from "styled-components";
 
-
-const Wrapper = styled.nav`
+export interface SideWrapper{
+    isSideBarOpen:boolean,
+}
+const Wrapper = styled.nav<SideWrapper>`
+    
     height:100vh;
     background-color: #FFFFFF;
-    width:400px;
+    width:${(props)=> props.isSideBarOpen ?'0px' :'400px'};
     display: none;
     position: sticky;
     left: 0;
     top:0;
+    overflow: hidden;
+    transition: 0.5s;
     
     .sideNavLogoDiv{
         /* border: 1px solid black; */
