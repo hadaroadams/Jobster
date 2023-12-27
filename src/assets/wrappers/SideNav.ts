@@ -42,7 +42,7 @@ const Wrapper = styled.nav<SideWrapper>`
         margin-left: 20px;
 
     }
-    @media (min-width:900px) {
+    @media (min-width:1000px) {
         display: block;
     }
  `

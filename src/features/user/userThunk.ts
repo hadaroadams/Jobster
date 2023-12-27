@@ -1,4 +1,5 @@
 import { State } from "../../components/Forms";
+import { UserData } from "../../components/ProfileMain";
 import { apiInstance } from "../../utilities/axios";
 interface ApiCall {
   message: string;
@@ -45,3 +46,16 @@ export const loginThunk = async (url: string, user: State,thunkApi:any) => {
     return thunkApi.rejectWithValue(Apierror.message)
   }
 };
+
+export const upDateThunk = async (url:string,user:UserData<string>,thunkApi:any)=>{
+  try{
+    const data = await apiInstance.post (url,user,{
+      headers:{
+        'Authorization': `Bearer $`
+      }
+    })
+  }catch(error:any){
+    const Apierror = <ApiCall>error
+    return thunkApi.rejectWithValue(Apierror.message)
+  }  
+}

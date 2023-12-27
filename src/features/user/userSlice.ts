@@ -1,8 +1,9 @@
 import { createSlice, current, createAsyncThunk } from "@reduxjs/toolkit";
-import { loginThunk, registrationThunk } from "./userThunk";
+import { loginThunk, registrationThunk, upDateThunk } from "./userThunk";
 import { State } from "../../components/Forms";
 import { addToLocalstorage } from "../../utilities/localstorage";
-import { Flag } from "@mui/icons-material";
+import { Flag, Update } from "@mui/icons-material";
+import { UserData } from "../../components/ProfileMain";
 
 interface UsersIntialValue {
   isLoading: boolean;
@@ -28,6 +29,13 @@ export const loginUser = createAsyncThunk(
     return loginThunk('auth/login',user, thunkApi) 
   }
 );
+
+export const upDateUser = createAsyncThunk(
+  'user/update',
+  async(user:UserData<string>,thunkApi)=>{
+    return upDateThunk("auth/updateUser",user,thunkApi)
+  }
+)
 const initialState: UsersIntialValue = {
   isLoading: false,
   isSideBarOpen:false,
@@ -73,7 +81,17 @@ export const userSlice = createSlice({
       .addCase(loginUser.rejected,(state,user)=>{
         state.isLoading = false;
       })
-    // .addCase(register.)
+      .addCase(upDateUser.pending,(state)=>{
+        state.isLoading=true
+      })
+      .addCase(upDateUser.fulfilled,(state,user)=>{
+        state.isLoading=false
+        state.user={}
+
+      })
+      .addCase(upDateUser.rejected,(state)=>{
+        state.isLoading= false
+      })
   },
 });
 

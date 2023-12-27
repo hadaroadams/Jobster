@@ -4,11 +4,15 @@ const Wrapper = styled.main`
     background-color: #F0F4F8;
     /* width:100vw; */
     width: 100%;
-    height:100%;
+    height:fit-content;
     display: flex;
     /* flex-direction: row-reverse; */
     .dashHeaderContDiv{
         width: 100%;
+        overflow: hidden;
+    }
+    .outletDiv{
+        min-height:87vh;
     }
     
 `
