@@ -46,20 +46,25 @@ const Header = () => {
       </div>
       <div className="testUserBtn">
         <button
-        className="userButton"
-          onClick={
-            ()=>{
-               setToggleButton(!toggleButton) 
-            }
-          }
+          className="userButton"
+          onClick={() => {
+            setToggleButton(!toggleButton);
+          }}
         >
           <AccountCircleIcon />
           <span>Hadaro</span>
-            <ArrowDropDownIcon />
+          <ArrowDropDownIcon />
         </button>
-        {
-            toggleButton && <button className="logOutBtn" onClick={()=>{ dispatch(logOutUser());}}>Logout</button>
-        }
+        {toggleButton && (
+          <button
+            className="logOutBtn"
+            onClick={() => {
+              dispatch(logOutUser());
+            }}
+          >
+            Logout
+          </button>
+        )}
       </div>
     </Wrapper>
   );

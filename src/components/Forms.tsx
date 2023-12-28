@@ -35,10 +35,12 @@ const Forms = ({ formType }: { formType: "Login" | "Register" }) => {
       );
     }
     if (formType === "Login") {
-      dispatch(loginUser({
-        email:value.initialState.email,
-        password:value.initialState.password
-      }));
+      dispatch(
+        loginUser({
+          email: value.initialState.email,
+          password: value.initialState.password,
+        })
+      );
     }
   };
   return (
