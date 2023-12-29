@@ -1,10 +1,14 @@
+import Wrapper from "../../assets/wrappers/AllJobs"
+import JobContainer from "../../components/JobContainer"
+import SearchContainer from "../../components/SearchContainer"
 
 
 const AllJobs = () => {
   return (
-    <div>
-      <h1>AllJobs</h1>
-    </div>
+    <Wrapper>
+      <SearchContainer/>
+      <JobContainer/>
+    </Wrapper>
   )
 }
 

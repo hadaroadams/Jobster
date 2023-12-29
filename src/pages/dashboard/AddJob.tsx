@@ -78,6 +78,7 @@ const AddJob = () => {
           </button>
         </section>
       </Form>
+      
     </Wrapper>
   );
 };
