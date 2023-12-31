@@ -14,7 +14,7 @@ export interface UserData<T> {
 
 const ProfileMain = () => {
   const { isLoading, user } = useSelector((state: RootState) => state.users);
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch(); 
   const [userData, setUserdata] = useState<UserData<string>>({
     name: user?.name || "",
     email: user?.email || "",
@@ -45,6 +45,7 @@ const ProfileMain = () => {
           type="text"
           value={userData.name}
           onChange={change}
+          profile
         />
         <DashInput
           name="lastName"
@@ -52,6 +53,8 @@ const ProfileMain = () => {
           type="text"
           value={userData.lastName}
           onChange={change}
+          profile
+
         />
         <DashInput
           name="email"
@@ -59,6 +62,8 @@ const ProfileMain = () => {
           type="text"
           value={userData.email}
           onChange={change}
+          profile
+
         />
         <DashInput
           name="location"
@@ -66,6 +71,7 @@ const ProfileMain = () => {
           type="text"
           value={userData.location}
           onChange={change}
+          profile
         />
         <button onClick={onSubmit}>
           {isLoading ? "Changing" : "Save Change"}

@@ -60,8 +60,9 @@ export const upDateThunk = async (
   user: UserData<string>,
   thunkApi: any
 ) => {
+
   try {
-    const data = await apiInstance.post(url, user, {
+    const data = await apiInstance.patch(url, user, {
       headers: {
         Authorization: `Bearer ${
           (thunkApi.getState() as RootState).users.user?.token

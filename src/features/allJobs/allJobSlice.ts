@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { deletJob, getAllJobs } from "./allJobsThunk";
+import { createSlice, current } from "@reduxjs/toolkit";
+import { deletJob, editJob, getAllJobs, getStats} from "./allJobsThunk";
 
 interface IntialFilterState {
   search: string;
@@ -25,8 +25,12 @@ interface InitialState extends IntialFilterState {
   totalJobs: number;
   numberOfPages: number;
   page: number;
-  stats: {};
-  monthlyAppilication: [];
+  stats: {
+    pending:number,
+    interview:number,
+    declined:number
+  };
+  monthlyApplications: [];
 }
 
 const initialFilterState: IntialFilterState = {
@@ -43,8 +47,8 @@ const initialState: InitialState = {
   totalJobs: 0,
   numberOfPages: 1,
   page: 1,
-  stats: {},
-  monthlyAppilication: [],
+  stats:{pending:0,declined:0,interview:0},
+  monthlyApplications: [],
   ...initialFilterState,
 };
 
@@ -71,6 +75,15 @@ const allJobSlice = createSlice({
       .addCase(getAllJobs.rejected, (state) => {
         state.isLoading = false;
       })
+      .addCase(editJob.pending,(state)=>{
+        state.isLoading=true
+      })
+      .addCase(editJob.fulfilled, (state)=>{
+        state.isLoading=false
+      })
+      .addCase(editJob.rejected,(state)=>{
+        state.isLoading=false
+      })
       .addCase(deletJob.pending,(state)=>{
         state.isLoading=true;
       })
@@ -79,6 +92,15 @@ const allJobSlice = createSlice({
       })
       .addCase(deletJob.rejected,(state)=>{
         state.isLoading=false
+      })
+      .addCase(getStats.pending,(state)=>{
+        state.isLoading=true
+      })
+      .addCase(getStats.fulfilled,(state,{payload})=>{
+          state.isLoading=false
+          state.monthlyApplications=payload.data.monthlyApplications
+          state.stats =payload.data.defaultStats
+          console.log(payload,current(state))
       })
   },
 });

@@ -3,6 +3,9 @@ import NearMeIcon from "@mui/icons-material/NearMe";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import WorkIcon from "@mui/icons-material/Work";
 import { Link } from "react-router-dom";
+import { useAppDispatch } from "../store";
+import { deletJob, editJob } from "../features/allJobs/allJobsThunk";
+import { editJobState } from "../features/jobs/JobSlice";
 
 interface JobProps {
   _id: string;
@@ -23,6 +26,10 @@ const JobItem = ({
   position,
   status,
 }: JobProps) => {
+  const dispatch = useAppDispatch();
+  const editFunc = () => {
+    dispatch(editJobState({_id,jobDetails:{company,jobLocation,jobType,status,position}}))
+    };
   return (
     <Wrapper status={status}>
       <div className="topDiv">
@@ -56,12 +63,10 @@ const JobItem = ({
         <span className="status">{status}</span>
       </div>
       <div className="btnDiv">
-        <Link to="/editJob" className="edit">
+        <Link to="/addjob" className="edit" onClick={editFunc}>
           Edit
         </Link>
-        <button className="delete" onClick={() => {
-            
-        }}>
+        <button className="delete" onClick={() =>{dispatch(deletJob({_id}))}}>
           Delete
         </button>
       </div>

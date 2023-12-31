@@ -41,7 +41,7 @@ export const loginUser = createAsyncThunk(
 export const upDateUser = createAsyncThunk(
   "user/update",
   async (user: UserData<string>, thunkApi) => {
-    return upDateThunk("auth/updateUser", user, thunkApi);
+    return upDateThunk("/auth/updateUser", user, thunkApi);
   }
 );
 const initialState: UsersIntialValue = {
@@ -96,6 +96,7 @@ export const userSlice = createSlice({
       .addCase(upDateUser.fulfilled, (state, user) => {
         state.isLoading = false;
         state.user = user.payload.data.user;
+        addToLocalstorage(state.user!);
       })
       .addCase(upDateUser.rejected, (state) => {
         state.isLoading = false;
