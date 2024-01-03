@@ -6,7 +6,14 @@ import { clearValue } from "../jobs/JobSlice";
 export const getAllJobs = createAsyncThunk(
   "allJobs/getJobs",
   async (_, thunkApi) => {
-    let url = "/jobs";
+    const state = thunkApi.getState() as RootState
+    const {search,page,sort,searchStatus,searchType}=state.allJob
+
+    let url = `/jobs?status=${searchStatus}&sort=${sort}&jobType=${searchType}&page=${page}`;
+    if(search){
+      url = url+`&${search}`
+    }
+    
     try {
       const data = await apiInstance.get(url, {
         headers: {

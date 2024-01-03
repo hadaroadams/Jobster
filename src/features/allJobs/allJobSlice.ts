@@ -57,10 +57,16 @@ const allJobSlice = createSlice({
   initialState,
   reducers: {
     clearFilter: (state) => {
-      return {
-        ...initialState,
-      };
+      return {...state,...initialFilterState};
     },
+    handleChange:(state,{payload})=>{
+      const {name , value} = payload  
+      console.log(payload)
+      state[name as ('search'|'searchStatus'|'searchType'|'sort')] = value
+      console.log(current(state))
+      return state
+      
+    }
   },
   extraReducers: (bulder) => {
     bulder
@@ -105,5 +111,5 @@ const allJobSlice = createSlice({
   },
 });
 
-const { clearFilter } = allJobSlice.actions;
+export const { clearFilter,handleChange } = allJobSlice.actions;
 export default allJobSlice.reducer;
