@@ -59,13 +59,19 @@ const allJobSlice = createSlice({
     clearFilter: (state) => {
       return {...state,...initialFilterState};
     },
+    clearAllState:(state)=>{
+      return state
+    },
     handleChange:(state,{payload})=>{
       const {name , value} = payload  
       console.log(payload)
       state[name as ('search'|'searchStatus'|'searchType'|'sort')] = value
       console.log(current(state))
-      return state
+      return initialState
       
+    },
+    changePage:(state,{payload})=>{
+      state.page = payload.page
     }
   },
   extraReducers: (bulder) => {
@@ -76,6 +82,7 @@ const allJobSlice = createSlice({
       .addCase(getAllJobs.fulfilled, (state, { payload }) => {
         console.log(payload);
         state.jobs = payload.data.jobs;
+        state.numberOfPages=payload.data.numOfPages
         state.isLoading = false;
       })
       .addCase(getAllJobs.rejected, (state) => {
@@ -103,13 +110,13 @@ const allJobSlice = createSlice({
         state.isLoading=true
       })
       .addCase(getStats.fulfilled,(state,{payload})=>{
-          state.isLoading=false
-          state.monthlyApplications=payload.data.monthlyApplications
-          state.stats =payload.data.defaultStats
+          state.isLoading = false
+          state.monthlyApplications = payload.data.monthlyApplications
+          state.stats = payload.data.defaultStats
           console.log(payload,current(state))
       })
   },
 });
 
-export const { clearFilter,handleChange } = allJobSlice.actions;
+export const { clearFilter,handleChange,changePage,clearAllState } = allJobSlice.actions;
 export default allJobSlice.reducer;

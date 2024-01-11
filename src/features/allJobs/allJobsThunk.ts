@@ -2,18 +2,19 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { apiInstance } from "../../utilities/axios";
 import { RootState } from "../../store";
 import { clearValue } from "../jobs/JobSlice";
+import { toast } from "react-toastify";
 
 export const getAllJobs = createAsyncThunk(
   "allJobs/getJobs",
   async (_, thunkApi) => {
-    const state = thunkApi.getState() as RootState
-    const {search,page,sort,searchStatus,searchType}=state.allJob
+    const state = thunkApi.getState() as RootState;
+    const { search, page, sort, searchStatus, searchType } = state.allJob;
 
     let url = `/jobs?status=${searchStatus}&sort=${sort}&jobType=${searchType}&page=${page}`;
-    if(search){
-      url = url+`&${search}`
+    if (search) {
+      url = url + `&${search}`;
     }
-    
+
     try {
       const data = await apiInstance.get(url, {
         headers: {
@@ -25,6 +26,10 @@ export const getAllJobs = createAsyncThunk(
       return data;
     } catch (error: any) {
       const errorMesg = error.response.data.mesg;
+      toast(error.response.data.msg, {
+        type: "error",
+        position: "top-center",
+      });
       return thunkApi.rejectWithValue(errorMesg);
     }
   }
@@ -47,7 +52,11 @@ export const deletJob = createAsyncThunk(
       return data;
     } catch (error: any) {
       const errorMesg = error.response.data.mesg;
-
+      console.log(error);
+      toast(error.response.data.msg,{
+      type:'error',
+      position:"top-center"
+    })
       return thunkApi.rejectWithValue(errorMesg);
     }
   }
@@ -67,28 +76,40 @@ export const editJob = createAsyncThunk(
           }`,
         },
       });
-      thunkApi.dispatch(clearValue())
-      console.log(data)
+      thunkApi.dispatch(clearValue());
+      console.log(data);
+      toast('Successfully Edited', {
+        type: "success",
+        position: "top-center",
+      });
       return data;
     } catch (error: any) {
-      console.log(error)
+      console.log(error);
       const errorMesg = error.response.data.mesg;
+      toast(error.response.data.msg, {
+        type: "error",
+        position: "top-center",
+      });
       return thunkApi.rejectWithValue(errorMesg);
     }
   }
 );
 
-export const  getStats = createAsyncThunk(
-  'allJobs/stats',
-  async(_,thunkApi)=>{
-    const url= '/jobs/stats'
-    try{
+export const getStats = createAsyncThunk(
+  "allJobs/stats",
+  async (_, thunkApi) => {
+    const url = "/jobs/stats";
+    try {
       const data = await apiInstance(url);
-      console.log(data)
-      return data
-    }catch(error:any){
-      const errorMesg = error.response.data.message
-      return thunkApi.rejectWithValue(errorMesg)
+      console.log(data);
+      return data;
+    } catch (error: any) {
+      const errorMesg = error.response.data.message;
+      toast(error.response.data.msg, {
+        type: "error",
+        position: "top-center",
+      });
+      return thunkApi.rejectWithValue(errorMesg);
     }
   }
-)
+);

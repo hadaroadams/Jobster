@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Links as link } from "../utilities/Links";
 import { useAppDispatch } from "../store";
 import { toggleSide } from "../features/user/userSlice";
@@ -25,9 +25,13 @@ const Links = ({ bigSide }: { bigSide?: boolean }) => {
         // console.log(e)
         return (
           <li key={id}>
-            <Link to={`${path}`} onClick={linkFunc}>
+            <NavLink
+              to={`${path}`}
+              onClick={linkFunc}
+              className={({ isActive }) => (isActive ? "activeLink" : "")}
+            >
               {icon} <span>{text}</span>
-            </Link>
+            </NavLink>
           </li>
         );
       })}

@@ -1,8 +1,8 @@
-import { Form } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import JobsterLogo from "../assets/JobsterLogo.svg";
 import InputForm from "./InputForms";
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../store";
 import { loginUser, registerUser } from "../features/user/userSlice";
@@ -22,9 +22,15 @@ const initialState: State = {
 
 const Forms = ({ formType }: { formType: "Login" | "Register" }) => {
   const [value, setValue] = useState({ initialState });
-  const { isLoading } = useSelector((state: RootState) => state.users);
+  const { isLoading,user } = useSelector((state: RootState) => state.users);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate()
   // console.log(value.initialState.)
+  useEffect(()=>{
+    if(user){
+      navigate('/')
+    }
+  },[user])
   const onSumit = (e: React.FormEvent) => {
     e.preventDefault;
     if (formType === "Register") {
@@ -62,16 +68,23 @@ const Forms = ({ formType }: { formType: "Login" | "Register" }) => {
           <InputForm label="Password" type="password" stateFn={setValue} />
         </div>
         <button
+        disabled={isLoading}
           type="submit"
           className="w-full bg-[#3B82F6]  text-white p-3 text-xl font-medium rounded-lg"
         >
           {isLoading ? "Submitting" : "Submit"}
         </button>
         <button
+        disabled={isLoading}
+          onClick={() => {
+            dispatch(
+              loginUser({ email: "testUser@test.com", password: "secret" })
+            );
+          }}
           type="button"
           className="w-full bg-[#8eb3f0] text-[#3B82F6] p-3 font-medium rounded-lg"
         >
-          Demo App
+          {isLoading?'Loading':'Demo App'}
         </button>
         {formType === "Login" ? (
           <p className="text-[1.2em] text-[#102A43]">

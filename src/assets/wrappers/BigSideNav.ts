@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { SideWrapper } from "./SideNav";
 
 const Wrapper = styled.div<SideWrapper>`
-  position: absolute;
+  position:fixed;
   z-index: ${(props)=>props.isSideBarOpen?'1':'-1' };
   background-color:${(props)=> props.isSideBarOpen? 'rgba(0, 0, 0, 0.6)':'rgba(0, 0, 0, 0)'};
   left: 0;
@@ -13,6 +13,8 @@ const Wrapper = styled.div<SideWrapper>`
   justify-content: center;
   align-items: center;
   transition: 0.3s ease-in-out;
+  height: 100vh;
+  
   
 
   .navContainer {
@@ -42,7 +44,11 @@ const Wrapper = styled.div<SideWrapper>`
       }
       ul {
         font-size: 1.6em;
+
         li{
+          :hover,.activeLink{
+            color:#3B82F6;
+          }
             margin:30px ;
         }
       }

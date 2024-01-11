@@ -19,3 +19,6 @@ export const getUserFromLocalStorage=():User|null=>{
         return null
     }
 }
+
+export const clearUserFromLocalStorage=()=>{
+}

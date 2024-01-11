@@ -1,5 +1,5 @@
 import { createSlice, current, createAsyncThunk } from "@reduxjs/toolkit";
-import { loginThunk, registrationThunk, upDateThunk } from "./userThunk";
+import { logOutThunk, loginThunk, registrationThunk, upDateThunk } from "./userThunk";
 import { State } from "../../components/Forms";
 import {
   addToLocalstorage,
@@ -44,6 +44,7 @@ export const upDateUser = createAsyncThunk(
     return upDateThunk("/auth/updateUser", user, thunkApi);
   }
 );
+export const  clearStore = createAsyncThunk('user/clearStore',async(message:string,thunkApi) => logOutThunk(message,thunkApi))
 const initialState: UsersIntialValue = {
   isLoading: false,
   isSideBarOpen: false,
@@ -59,6 +60,7 @@ export const userSlice = createSlice({
       state.isSideBarOpen = !state.isSideBarOpen;
     },
     logOutUser: (state) => {
+      localStorage.removeItem('user')
       state.user = null;
     },
   },
@@ -83,7 +85,7 @@ export const userSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(loginUser.fulfilled, (state, user) => {
-        state.user = user.payload;
+        state.user = user.payload.data.user;
         addToLocalstorage(state.user!);
         state.isLoading = false;
       })

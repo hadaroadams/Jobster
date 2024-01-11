@@ -65,7 +65,7 @@ const SearchContainer = () => {
           value={sort}
           items={["all", ...sortOptions]}
         />
-        <button onClick={submit} disabled={isLoading} type="button">clear Filters</button>
+        <button onClick={submit} disabled={isLoading} type="button">Clear Filters</button>
       </Form>
     </Wrapper>
   );

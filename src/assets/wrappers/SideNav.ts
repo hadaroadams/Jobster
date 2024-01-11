@@ -30,10 +30,11 @@ const Wrapper = styled.nav<SideWrapper>`
         margin-left:0px;
 
     }
-    .sideNavLinks ul li:hover{
+    .sideNavLinks ul li:hover, .activeLink{
          margin-left:10px;
          color: #3B82F6
     }
+    
     .sideNavLinks ul li:hover span{
         color:#1B344C;
     }

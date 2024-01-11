@@ -3,10 +3,12 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Wrapper from "../assets/wrappers/Header";
 import { useSelector } from "react-redux";
-import { toggleSide, logOutUser } from "../features/user/userSlice";
+import { toggleSide, logOutUser, clearStore } from "../features/user/userSlice";
 import { RootState, useAppDispatch } from "../store";
 import axios from "axios";
 import { useState } from "react";
+import { redirect } from "react-router-dom";
+import { logOutThunk } from "../features/user/userThunk";
 
 interface InitialState {
   name: string;
@@ -24,7 +26,7 @@ const initialState: InitialState = {
 
 const Header = () => {
   const [toggleButton, setToggleButton] = useState(false);
-  const state = useSelector((state: RootState) => state);
+  const user = useSelector((state: RootState) => state.users.user);
   const dispatch = useAppDispatch();
   // console.log(state.users.isSideBarOpen)
   return (
@@ -52,14 +54,15 @@ const Header = () => {
           }}
         >
           <AccountCircleIcon />
-          <span>Hadaro</span>
+          <span>{user?.name}</span>
           <ArrowDropDownIcon />
         </button>
         {toggleButton && (
           <button
             className="logOutBtn"
             onClick={() => {
-              dispatch(logOutUser());
+              console.log('log')
+              dispatch(clearStore('Logged Out Successfully'))
             }}
           >
             Logout

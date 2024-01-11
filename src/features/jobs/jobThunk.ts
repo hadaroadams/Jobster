@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { apiInstance } from "../../utilities/axios";
 import { RootState } from "../../store";
+import { toast } from "react-toastify";
 
 export const createJob = createAsyncThunk(
   "job/createJob",
@@ -15,11 +16,19 @@ export const createJob = createAsyncThunk(
         },
       });
       console.log(data);
+      toast("Job has been created", {
+        type: "success",
+        position: "top-center",
+      });
       return data;
     } catch (error: any) {
       console.log(error);
       const errorMessage = error.response.data.message;
       console.log(errorMessage);
+      toast(error.response.data.msg, {
+        type: "error",
+        position: "top-center",
+      });
       return thunkApi.rejectWithValue(errorMessage);
     }
   }
