@@ -50,7 +50,7 @@ const Forms = ({ formType }: { formType: "Login" | "Register" }) => {
     }
   };
   return (
-    <main className="min-h-[90vh] my-10 w-[500px] bg-white shadow-xl rounded-lg overflow-hidden">
+    <main className="min-h-[90vh] my-10 sm:w-[400px] md:w-[500px] bg-white shadow-xl rounded-lg overflow-hidden">
       <div className="w-full h-2 bg-[#3B82F6]"></div>
       <Form
         onSubmit={onSumit}
