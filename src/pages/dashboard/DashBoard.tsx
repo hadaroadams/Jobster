@@ -26,7 +26,7 @@ const DashBoard = () => {
       <div className={`dashHeaderContDiv`}>
         <Header />
         {/* {isLoading && (<><div className="w-10 h-10 bg-red-400"></div></>)} */}
-        <div className="outletDiv w-full border-2 border-gray-200">
+        <div className="outletDiv w-full flex flex-col  items-center border-2 border-gray-200">
           <Outlet />
         </div>
       </div>

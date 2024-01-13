@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-    margin: 40px;
+    margin:40px 0px;
 
     h1{
         font-size: 1.5em;
@@ -11,6 +11,7 @@ const Wrapper = styled.div`
     }
     .jobContainer{
         display: grid;
+        justify-content: center;
         gap:30px;
         @media (min-width:800px) {
             grid-template-columns: 1fr 1fr;

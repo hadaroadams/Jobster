@@ -3,14 +3,13 @@ import styled from "styled-components";
 const Wrapper =styled.main`
     color:#102A43;
     background-color:white;
-    margin: 30px;
+    margin:30px auto;
     padding: 40px;
     /* -webkit-box-shadow: 0px 0px 39px -14px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 0px 39px -14px rgba(0,0,0,0.75); */
-box-shadow: 0px 0px 39px -14px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 39px -14px rgba(0,0,0,0.75); */
+    box-shadow: 0px 0px 39px -14px rgba(0,0,0,0.75);
     border-radius: 10px;
-    
-
+    width: 100%;
     h1{
         font-size: 2.4em;
         font-weight: 500;
@@ -22,13 +21,16 @@ box-shadow: 0px 0px 39px -14px rgba(0,0,0,0.75);
         display: grid;
         grid-template-columns: 1fr;
         column-gap: 10px;   
-        width:100%;
+        width:100%;  
         overflow-wrap: wrap;
+        /* border: 1px solid black; */
 
         div{
             margin-top:20px ;
             display: flex;
             flex-direction: column;
+            /* border: 1px solid black; */
+            width:100% ;
             
             label{
                 margin-bottom: 5px
@@ -56,6 +58,7 @@ box-shadow: 0px 0px 39px -14px rgba(0,0,0,0.75);
         section{
             display: flex;
             gap: 10px;
+
             :first-child{
                 background-color:#627D98 ;
             }

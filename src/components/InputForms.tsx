@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { State } from "./Forms";
 
 interface InputFormProp {
@@ -15,7 +15,7 @@ interface InputFormProp {
 const InputForm = ({ label, type, value, stateFn }: InputFormProp) => {
   // const [inputValue,setInputValue]= useState<string>('')
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     stateFn((state) => {
       const name = e.target.name 
       const name1 = name.charAt(0).toLocaleLowerCase() +name.slice(1) as "name" | "email" | "password";

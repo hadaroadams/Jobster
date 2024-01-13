@@ -2,7 +2,7 @@ import ProfileMain from "../../components/ProfileMain"
 
 const Profile = () => {
   return (
-    <div>
+    <div className="w-[90%]">
         <ProfileMain/>
     </div>
   )

@@ -4,7 +4,7 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import WorkIcon from "@mui/icons-material/Work";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "../store";
-import { deletJob, editJob } from "../features/allJobs/allJobsThunk";
+import { deletJob } from "../features/allJobs/allJobsThunk";
 import { editJobState } from "../features/jobs/JobSlice";
 
 interface JobProps {

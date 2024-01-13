@@ -4,12 +4,12 @@ import StatItem from "../../components/StatItem";
 import { RootState, useAppDispatch } from "../../store";
 import { getStats } from "../../features/allJobs/allJobsThunk";
 import { useSelector } from "react-redux";
-import EventAvailableIcon from '@mui/icons-material/EventAvailable';
-import LuggageIcon from '@mui/icons-material/Luggage';
+// import EventAvailableIcon from '@mui/icons-material/EventAvailable';
+// import LuggageIcon from '@mui/icons-material/Luggage';
 import ChartContainer from "../../components/ChartContainer";
 
 const Stats = () => {
-  const {stats,monthlyApplications}= useSelector((state:RootState)=>state.allJob)
+  const { stats }= useSelector((state:RootState)=>state.allJob)
   const dispatch = useAppDispatch()
   useEffect(()=>{
     dispatch(getStats())

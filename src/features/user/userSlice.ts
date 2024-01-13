@@ -19,9 +19,6 @@ interface UsersIntialValue {
   } | null;
 }
 
-interface ApiCall {
-  message: string;
-}
 
 export const registerUser = createAsyncThunk(
   "user/register",
@@ -66,7 +63,7 @@ export const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(registerUser.pending, (state, user) => {
+      .addCase(registerUser.pending, (state) => {
         state.isLoading = true;
         // console.log(console.log(user));
       })
@@ -77,11 +74,11 @@ export const userSlice = createSlice({
         addToLocalstorage(state.user!);
         console.log("fulFilled");
       })
-      .addCase(registerUser.rejected, (state, user) => {
+      .addCase(registerUser.rejected, (state) => {
         state.isLoading = false;
         console.log("rejected");
       })
-      .addCase(loginUser.pending, (state, user) => {
+      .addCase(loginUser.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(loginUser.fulfilled, (state, user) => {
@@ -89,7 +86,7 @@ export const userSlice = createSlice({
         addToLocalstorage(state.user!);
         state.isLoading = false;
       })
-      .addCase(loginUser.rejected, (state, user) => {
+      .addCase(loginUser.rejected, (state) => {
         state.isLoading = false;
       })
       .addCase(upDateUser.pending, (state) => {

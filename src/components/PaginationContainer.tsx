@@ -8,15 +8,13 @@ const PaginationContainer = () => {
     (state: RootState) => state.allJob
   );
   const dispatch = useAppDispatch();
-  console.log(numberOfPages);
+  // console.log(numberOfPages);
   const pageArray = Array.from({ length: numberOfPages }, (_, item) => {
     return item + 1;
   });
   //   console.log(page);
 
-  const showPage = (pageNum: number) => {
-    dispatch(changePage({ page: pageNum }));
-  };
+  
 
   const prev = () => {
     let num: number;

@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux"
-import Wrapper from "../../assets/wrappers/AllJobs"
 import JobContainer from "../../components/JobContainer"
 import SearchContainer from "../../components/SearchContainer"
 import { RootState } from "../../store"
@@ -10,10 +9,10 @@ const AllJobs = () => {
   console.log('render')
   console.log(search)
   return (
-    <Wrapper>
+    <div className="w-[90%]">
       <SearchContainer/>
       <JobContainer/>
-    </Wrapper>
+    </div>
   )
 }
 

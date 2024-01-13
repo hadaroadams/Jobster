@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { RootState } from "../store";
-import Wrapper from "../assets/wrappers/BarChart";
 
 const BarChartComp = () => {
     const {monthlyApplications}=useSelector((state:RootState)=>state.allJob)

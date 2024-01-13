@@ -4,6 +4,7 @@ import DashInput from "./DashInput";
 import { RootState, useAppDispatch } from "../store";
 import { upDateUser } from "../features/user/userSlice";
 import { useSelector } from "react-redux";
+import { Form } from "react-router-dom";
 
 export interface UserData<T> {
   name: T;
@@ -38,7 +39,7 @@ const ProfileMain = () => {
   return (
     <Wrapper>
       <h1>Profile</h1>
-      <form action="">
+      <Form action="">
         <DashInput
           name="name"
           label="Name"
@@ -74,7 +75,7 @@ const ProfileMain = () => {
         <button onClick={onSubmit}>
           {isLoading ? "Changing" : "Save Change"}
         </button>
-      </form>
+      </Form>
     </Wrapper>
   );
 };

@@ -1,5 +1,5 @@
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
-import Wrapper from "../assets/wrappers/BarChart"
+// import Wrapper from "../assets/wrappers/BarChart"
 import { useSelector } from "react-redux"
 import { RootState } from "../store"
 

@@ -14,6 +14,7 @@ const Wrapper = styled.main`
     }
     .outletDiv{
         min-height:87vh;
+        /* border: 1px solid black; */
     }
     
 `

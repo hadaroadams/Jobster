@@ -1,4 +1,4 @@
-import { Form, redirect, useNavigate, useNavigation } from "react-router-dom";
+import { Form} from "react-router-dom";
 import Wrapper from "../../assets/wrappers/ProfileMain";
 import DashInput from "../../components/DashInput";
 import Selection from "../../components/Selection";
@@ -59,56 +59,58 @@ const AddJob = () => {
   };
   console.log("hello");
   return (
-    <Wrapper>
-      <h1>{isEditing ? "Edit Job" : "Add Job"}</h1>
-      <Form>
-        <DashInput
-          label="Position"
-          name="position"
-          onChange={onChange}
-          type="text"
-          value={position}
-        />
-        <DashInput
-          label="Company"
-          name="company"
-          onChange={onChange}
-          type="text"
-          value={company}
-        />
-        <DashInput
-          label="Job Location"
-          name="jobLocation"
-          onChange={onChange}
-          type="text"
-          value={jobLocation}
-        />
-        <Selection
-          items={[...statusOptions]}
-          value={status}
-          name="status"
-          label="Status"
-          onChange={onChange}
-        />
-        <Selection
-          items={[...jobTypeOptions]}
-          value={jobType}
-          name="jobType"
-          label="Job Type"
-          onChange={onChange}
-        />
-        <section>
-          <button type="button" onClick={clear}>
-            clear
-          </button>
-          <button type="submit" onClick={submit}>
-            {
-              isLoading||editLoading?"Submitting":"Submit"
-            }
-          </button>
-        </section>
-      </Form>
-    </Wrapper>
+    <div className='w-[90%]'>
+      <Wrapper>
+        <h1>{isEditing ? "Edit Job" : "Add Job"}</h1>
+        <Form>
+          <DashInput
+            label="Position"
+            name="position"
+            onChange={onChange}
+            type="text"
+            value={position}
+          />
+          <DashInput
+            label="Company"
+            name="company"
+            onChange={onChange}
+            type="text"
+            value={company}
+          />
+          <DashInput
+            label="Job Location"
+            name="jobLocation"
+            onChange={onChange}
+            type="text"
+            value={jobLocation}
+          />
+          <Selection
+            items={[...statusOptions]}
+            value={status}
+            name="status"
+            label="Status"
+            onChange={onChange}
+          />
+          <Selection
+            items={[...jobTypeOptions]}
+            value={jobType}
+            name="jobType"
+            label="Job Type"
+            onChange={onChange}
+          />
+          <section>
+            <button type="button" onClick={clear}>
+              clear
+            </button>
+            <button type="submit" onClick={submit}>
+              {
+                isLoading||editLoading?"Submitting":"Submit"
+              }
+            </button>
+          </section>
+        </Form>
+      </Wrapper>
+    </div>
   );
 };
 

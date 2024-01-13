@@ -56,7 +56,8 @@ export const loginThunk = async (url: string, user: State, thunkApi: any) => {
     return data;
   } catch (error: any) {
     const Apierror = <ApiCall>error;
-    console.log(Apierror.message);
+    console.log(Apierror.message,Apierror);
+
     toast(error.response.data.msg, {
       type: "error",
       position: "top-center",
